@@ -1,0 +1,7 @@
+# syntax highlighter
+highlighter: pygments
+
+# sass
+sass:
+  sass_dir:  _sass
+  style:     compressed
