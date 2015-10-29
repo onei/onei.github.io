@@ -7,14 +7,14 @@
 		<meta name="keywords" content="bar">
 
 		<!-- stylesheets -->
-		<link rel="stylesheet" href="css/main.scss">
+		<link rel="stylesheet" href="css/main.css">
 	</head>
 	<body>
-		<header>{% include header.html %}</header>
-		<nav>{% include nav.html %}</nav>
-		<main>
-			<article>{{ content }}</article>
+		<header id="headerContainer" class="header-container">{% include header.html %}</header>
+		<nav id="navContainer" class="nav-container">{% include nav.html %}</nav>
+		<main id="main" class="main">
+			<article id="article" class="main">{{ content }}</article>
 		</main>
-		<footer>{% include footer.html %}</footer>
+		<footer id="footerContainer" class="footer-container">{% include footer.html %}</footer>
 	</body>
 </html>
