@@ -1,0 +1,102 @@
+---
+---
+
+/*
+@import 'segment/logo';
+@import 'segment/instructions';
+@import 'segment/rail';
+@import 'segment/chevron';
+@import 'segment/inputs';
+*/
+
+.segment-wrapper {
+	margin: 20px 0;
+	height: 230px;
+	position: relative;
+}
+
+.segment-rail {
+	height: 230px;
+	margin: 10px 0;
+	overflow: hidden;
+	width: 100%;
+	position: relative;
+}
+
+.segment-overlay {
+	position: absolute;
+	background-color: rgba(0, 0, 0, 0.5);
+	top: 0;
+	height: 250px;
+	line-height: 250px;
+	width: 204px;
+	vertical-align: middle;
+}
+
+.segment-overlay-left {
+	background: linear-gradient(to right, #000 40%, rgba(0, 0, 0, 0.7) 100%);
+	left: 0;
+	text-align: right;
+	padding-right: 20px;
+}
+
+.segment-overlay-right {
+	background: linear-gradient(to left, #000 40%, rgba(0, 0, 0, 0.7) 100%);
+	right: 0;
+	text-align: left;
+	padding-left: 20px;
+}
+
+.segment-display {
+	width: 130px;
+	height: 220px;
+	background-color: #000;
+	position: absolute;
+}
+
+.segment-7 {
+	height: 220px;
+	width: 130px;
+
+	.seg {
+		fill: rgba(255, 255, 255, 0.2);
+
+		&.on {
+			fill: #f00;
+		}
+	}
+}
+
+.chevron {
+	color: #aaa;
+}
+
+// @todo transform
+.chevron:hover {
+	color: #fff;
+}
+
+// <http://codepen.io/jonneal/pen/kptBs>
+.chevron::before {
+	border-style: solid;
+	border-width: 0.75em 0.75em 0 0;
+	content: '';
+	display: inline-block;
+	height: 1.5em;
+	position: relative;
+	transform: rotate(-45deg);
+	width: 1.5em;
+}
+
+.chevron.right:before {
+	transform: rotate(45deg);
+}
+
+.chevron.left:before {
+	transform: rotate(-135deg);
+}
+
+.instructions {
+	border-bottom: 2px solid #fff;
+	padding-bottom: 20px;
+}

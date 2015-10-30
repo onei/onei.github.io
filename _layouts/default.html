@@ -8,13 +8,17 @@
 
 		<!-- stylesheets -->
 		<link rel="stylesheet" href="css/main.css">
+		<link rel="stylesheet" href="css/segment.css">
 	</head>
 	<body>
 		<header id="headerContainer" class="header-container">{% include header.html %}</header>
-		<nav id="navContainer" class="nav-container">{% include nav.html %}</nav>
 		<main id="main" class="main">
-			<article id="article" class="main">{{ content }}</article>
+			<article id="article" class="article">{{ content }}</article>
 		</main>
 		<footer id="footerContainer" class="footer-container">{% include footer.html %}</footer>
+
+		<!-- scripts -->
+		<script src="/js/jquery-2.1.4.min.js"></script>
+		<script src="/js/segment.js"></script>
 	</body>
 </html>

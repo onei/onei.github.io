@@ -1,4 +1,42 @@
 ---
 layout: default
+title: Segments
 ---
-Hello world
+<section class="instructions">
+	<h2>Instructions</h2>
+	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non tristique velit, eget ornare nibh. Curabitur erat nisl, maximus ac velit quis, elementum varius diam. In pulvinar porta augue, sed lacinia est egestas non. Duis eu consectetur augue. Curabitur porta mi leo, et ornare nisl fermentum aliquam. Donec ut augue nec erat congue vulputate. Donec vehicula lacus condimentum dolor placerat, nec porttitor lorem sollicitudin. Vivamus viverra, neque sed dignissim accumsan, risus neque congue turpis, a sollicitudin nisi est ac odio.</p>
+</section>
+<section class="segment-wrapper">
+	<div class="segment-rail">
+		<div class="segment-display index-0" style="transform: translate(-44px, 5px);">
+			{% include svg/7-segment.svg %}
+		</div>
+		<div class="segment-display index-1" style="transform: translate(90px, 5px);">
+			{% include svg/7-segment.svg %}
+		</div>
+		<div class="segment-display index-2 view-0" style="transform: translate(224px, 5px);">
+			{% include svg/7-segment.svg %}
+		</div>
+		<div class="segment-display index-3 view-1" style="transform: translate(358px, 5px);">
+			{% include svg/7-segment.svg %}
+		</div>
+		<div class="segment-display index-4 view-2" style="transform: translate(492px, 5px);">
+			{% include svg/7-segment.svg %}
+		</div>
+		<div class="segment-display index-5 view-3" style="transform: translate(626px, 5px);">
+			{% include svg/7-segment.svg %}
+		</div>
+		<div class="segment-display index-6" style="transform: translate(760px, 5px);">
+			{% include svg/7-segment.svg %}
+		</div>
+		<div class="segment-display index-7" style="transform: translate(894px, 5px);">
+			{% include svg/7-segment.svg %}
+		</div>
+	</div>
+	<div class="segment-overlay segment-overlay-left">
+		<span class="chevron left"></span>
+	</div>
+	<div class="segment-overlay segment-overlay-right">
+		<span class="chevron right"></span>
+	</div>
+</section>

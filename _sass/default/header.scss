@@ -1,0 +1,26 @@
+// header scss
+
+.header-container {
+	background-color: #000;
+	border-bottom: 2px solid #fff;
+	color: #fff;
+	padding: 5px;
+
+	.header {
+		margin: auto;
+		position: relative;
+		width: 1000px;
+	
+		.logo {
+			background-color: #000;
+			border: 2px solid #fff;
+			color: #fff;
+			font-weight: bold;
+			height: 60px;
+			line-height: 60px;
+			margin-left: 50px;
+			text-align: center;
+			width: 180px;
+		}
+	}
+}
