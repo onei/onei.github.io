@@ -1,7 +1,6 @@
 <svg viewBox="0 0 301 494" xmlns="http://www.w3.org/2000/svg" class="segment-7">
 	<g>
-		<title>7 segment display</title>
-
+		<title>Click the segments to turn them on and off!</title>
 		<!-- horizontals -->
 		<path d="m31,22 v6 l22,22 h165 l22,-22 v-6 l-22,-22 h-165 l-22,22 z" class="seg-A seg" />
 		<path d="m31,243 v6 l22,22 h165 l22,-22 v-6 l-22,-22 h-165 l-22,22 z" class="seg-G seg" />

@@ -4,39 +4,72 @@ title: Segments
 ---
 <section class="instructions">
 	<h2>Instructions</h2>
-	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non tristique velit, eget ornare nibh. Curabitur erat nisl, maximus ac velit quis, elementum varius diam. In pulvinar porta augue, sed lacinia est egestas non. Duis eu consectetur augue. Curabitur porta mi leo, et ornare nisl fermentum aliquam. Donec ut augue nec erat congue vulputate. Donec vehicula lacus condimentum dolor placerat, nec porttitor lorem sollicitudin. Vivamus viverra, neque sed dignissim accumsan, risus neque congue turpis, a sollicitudin nisi est ac odio.</p>
+	<span class="collapse">[hide/show]</span>
+	<p class="collapsible">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non tristique velit, eget ornare nibh. Curabitur erat nisl, maximus ac velit quis, elementum varius diam. In pulvinar porta augue, sed lacinia est egestas non. Duis eu consectetur augue. Curabitur porta mi leo, et ornare nisl fermentum aliquam. Donec ut augue nec erat congue vulputate. Donec vehicula lacus condimentum dolor placerat, nec porttitor lorem sollicitudin. Vivamus viverra, neque sed dignissim accumsan, risus neque congue turpis, a sollicitudin nisi est ac odio.</p>
 </section>
 <section class="segment-wrapper">
 	<div class="segment-rail">
-		<div class="segment-display index-0" style="transform: translate(-44px, 5px);">
+		<!-- todo: loop through this somehow -->
+		<div class="segment-display ani index-0" style="transform: translate(-44px, 5px);">
 			{% include svg/7-segment.svg %}
 		</div>
-		<div class="segment-display index-1" style="transform: translate(90px, 5px);">
+		<div class="segment-display ani index-1" style="transform: translate(90px, 5px);">
 			{% include svg/7-segment.svg %}
 		</div>
-		<div class="segment-display index-2 view-0" style="transform: translate(224px, 5px);">
+		<div class="segment-display ani index-2 view-0" style="transform: translate(224px, 5px);">
 			{% include svg/7-segment.svg %}
 		</div>
-		<div class="segment-display index-3 view-1" style="transform: translate(358px, 5px);">
+		<div class="segment-display ani index-3 view-1" style="transform: translate(358px, 5px);">
 			{% include svg/7-segment.svg %}
 		</div>
-		<div class="segment-display index-4 view-2" style="transform: translate(492px, 5px);">
+		<div class="segment-display ani index-4 view-2" style="transform: translate(492px, 5px);">
 			{% include svg/7-segment.svg %}
 		</div>
-		<div class="segment-display index-5 view-3" style="transform: translate(626px, 5px);">
+		<div class="segment-display ani index-5 view-3" style="transform: translate(626px, 5px);">
 			{% include svg/7-segment.svg %}
 		</div>
-		<div class="segment-display index-6" style="transform: translate(760px, 5px);">
+		<div class="segment-display ani index-6" style="transform: translate(760px, 5px);">
 			{% include svg/7-segment.svg %}
 		</div>
-		<div class="segment-display index-7" style="transform: translate(894px, 5px);">
+		<div class="segment-display ani index-7" style="transform: translate(894px, 5px);">
 			{% include svg/7-segment.svg %}
 		</div>
 	</div>
 	<div class="segment-overlay segment-overlay-left">
-		<span class="chevron left"></span>
+		<span class="chevron left" title="move left"></span>
 	</div>
 	<div class="segment-overlay segment-overlay-right">
-		<span class="chevron right"></span>
+		<span class="chevron right" title="move right"></span>
+	</div>
+</section>
+<section class="options">
+	<h2>Options</h2>
+	<div class="colours">Colour: [green] [blue] [purple] [red] [orange] [yellow]</div>
+	<div class="clear-fill">[Clear all] [Fill all]</div>
+</section>
+<section class="inputs">
+	<div class="letters">
+		<!-- todo generate via loop -->
+		<span class="view-0">DP G F E D C B A</span> |
+		<span class="view-1">DP G F E D C B A</span> |
+		<span class="view-2">DP G F E D C B A</span> |
+		<span class="view-3">DP G F E D C B A</span>
+	</div>
+	<div class="binary">
+		<!-- todo generate via loop -->
+		<span class="view-0">0000 0000</span> |
+		<span class="view-1">0000 0000</span> |
+		<span class="view-2">0000 0000</span> |
+		<span class="view-3">0000 0000</span> |
+	</div>
+	<div class="hex">
+		<!-- todo generate via loop -->
+		<span class="view-0">00</span> |
+		<span class="view-1">00</span> |
+		<span class="view-2">00</span> |
+		<span class="view-3">00</span>
+	</div>
+	<div class="submit">
+		<input type="submit" value="Submit">
 	</div>
 </section>
