@@ -9,6 +9,20 @@ html {
 	font-size: 20px;
 }
 
+section {
+	border-bottom: 2px solid #fff;
+	padding-bottom: 30px;
+	margin-bottom: 30px;
+
+	&:first-child {
+		margin-top: 30px;
+	}
+
+	&:last-child {
+		border-bottom: 0;
+	}
+}
+
 @import 'segments/rail';
 @import 'segments/chevron';
 @import 'segments/animation';

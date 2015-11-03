@@ -11,6 +11,10 @@ unsupported broswers:
 	Opera mini
 
 @todo limit to 2 segements for mobile?
+
+options:
+    active low or active high
+    DP -> A or A -> DP
 -->
 <section id="segments" class="segments">
 	<div id="segRail" class="seg-rail">
@@ -33,6 +37,8 @@ unsupported broswers:
 			<span id="coloursPick{{ colour | capitalize }}" class="pick {{ colour }}" data-colour="{{colour}}"></span>
 		{% endfor %}
 	</div>
+	<!-- @todo active low/high config -->
+	<!-- @todo reverse order of digits, i.e. DP -> A or A -> DP -->
 </section>
 <section id="inputs" class="inputs">
 	<div id="inputsLetters" class="letters">
@@ -48,12 +54,12 @@ unsupported broswers:
 	</div>
 	<div id="inputsBinary" class="binary">
 		{% for i in (0..3) %}
-			<div id="viewBinary{{ i }}" class="view" data-view="{{ i }}">0000 0000</div>
+			<div id="viewBinary{{ i }}" class="view" data-view="{{ i }}">0b00000000</div>
 		{% endfor %}
 	</div>
 	<div id="inputsHex" class="hex">
 		{% for i in (0..3) %}
-			<div id="viewHex{{ i }}" class="view" data-view="{{ i }}">00</div>
+			<div id="viewHex{{ i }}" class="view" data-view="{{ i }}">0x00</div>
 		{% endfor %}
 	</div>
 </section>

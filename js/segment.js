@@ -3,6 +3,10 @@
 // swipe events for mobile support
 // <http://www.javascriptkit.com/javatutors/touchevents2.shtml>
 
+// @todo add support for predefined patterns via hex values in url
+//       value=$hex animate=(1/0) activelow=(1/0) startwith=(DP/A) (startswith_)
+//       @todo find word for DP->A order
+
 (function ($) {
 
 	'use strict';
@@ -44,6 +48,19 @@
 			last: null
 		},
 
+		settings = {
+			/**
+			 * Whether the display is active low (if the segment's bit is set to 1 it's off)
+			 * or active high (vice versa)
+			 */
+			activeLow: false,
+
+			/**
+			 * 1 is DP->A, 0 is A->DP
+			 */
+			order: 1,
+		},
+
 		/**
 		 * @todo
 		 */
@@ -65,6 +82,9 @@
 
 				// set initial highlight colour
 				init.setColour();
+
+				// enforce values in `settings`
+				init.enforceSettings();
 
 				// segment click handlers
 				$('#segRail .seg').click(segments.highlight);
@@ -131,6 +151,28 @@
 			setColour: function () {
 				$('#coloursPickGreen').addClass('selected');
 				$('#segRail, #inputsLetters').addClass('green');
+			},
+
+			/**
+			 *
+			 */
+			enforceSettings: function () {
+				var $letters = $('#inputsLetters .view');
+
+				// enforce order of segments
+				// matters when calculating binary and hex values
+				if (settings.order === 0) {
+					$letters.each(function () {
+						// <http://stackoverflow.com/a/5347903/1942596>
+						var $this = $(this),
+							$letters = $this.children();
+
+						$this.append($letters.get().reverse());
+					});
+				}
+
+				// delegate binary hex conversion to the normal function
+				inputs.updateBinaryHex();
 			}
 		},
 
@@ -147,9 +189,12 @@
 				disabled = true;
 
 				// allow another movement when the animation has completed (500ms)
+				// plus a bit more because it caused an odd positioning bug
+				// where if a click was timed right it could cause two segments to end up
+				// on top of each other
 				setTimeout(function () {
 					disabled = false;
-				}, 500);
+				}, 550);
 
 				var $segs = $('#segRail .seg-display'),
 					re = /matrix\(\s*-?\d+,\s*-?\d+,\s*-?\d+,\s*-?\d+,\s*(-?\d+),\s*(-?\d+)\s*\)/,
@@ -196,9 +241,12 @@
 				disabled = true;
 
 				// allow another movement when the animation has completed (500ms)
+				// plus a bit more because it caused an odd positioning bug
+				// where if a click was timed right it could cause two segments to end up
+				// on top of each other
 				setTimeout(function () {
 					disabled = false;
-				}, 500);
+				}, 550);
 
 				var $segs = $('#segRail .seg-display'),
 					re = /matrix\(\s*-?\d+,\s*-?\d+,\s*-?\d+,\s*-?\d+,\s*(-?\d+),\s*(-?\d+)\s*\)/,
@@ -344,6 +392,8 @@
 					svg.addClass($this, 'on');
 					$letter.addClass('on');
 				}
+
+				inputs.updateBinaryHex();
 			}
 		},
 
@@ -394,6 +444,8 @@
 					$this.addClass('on');
 					svg.addClass($segment, 'on');
 				}
+
+				inputs.updateBinaryHex();
 			},
 
 			/**
@@ -411,8 +463,6 @@
 					var $seg = $(this),
 						$letter = $letters.eq(i).find('.letter');
 
-					console.log($seg.get(0), $letter.get(0));
-
 					// start with a clean slate
 					$letter.removeClass('on');
 
@@ -423,6 +473,43 @@
 							$letter.filter('[data-letter="' + id + '"]').addClass('on');
 						}
 					});
+				});
+
+				inputs.updateBinaryHex();
+			},
+
+			/**
+			 * Updates binary and hex outputs
+			 */
+			updateBinaryHex: function () {
+				var $letters = $('#inputsLetters .view'),
+					$bins = $('#inputsBinary .view'),
+					$hexs = $('#inputsHex .view');
+
+				$letters.each(function (i) {
+					var $this = $(this),
+						$bin = $bins.eq(i),
+						$hex = $hexs.eq(i),
+						binStr = '0b',
+						hexStr = '0x';
+
+					$this.find('.letter').each(function () {
+						if ($(this).hasClass('on')) {
+							binStr += (settings.activeLow ? '0' : '1');
+						} else {
+							binStr += (settings.activeLow ? '1' : '0');
+						}
+					});
+
+					
+
+					hexStr += ('00' + (binStr * 1).toString(16)).slice(-2);
+
+					console.log(binStr);
+					console.log(hexStr);
+
+					$bin.text(binStr);
+					$hex.text(hexStr);
 				});
 			}
 		},

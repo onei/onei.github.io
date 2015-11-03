@@ -2,12 +2,24 @@
  * Colour variables for segments page
  */
 
+// basic theme
 $background: #000;
 $text: #fff;
 
+// highlight colours
 $green: #0f0;
 $blue: #00f;
 $purple: #800080;
 $red: #f00;
 $orange: #ff7f00;
 $yellow: #ff0;
+
+// map of highlight colours for looping through
+$colour-map: (
+	'green':	$green,
+	'blue':		$blue,
+	'purple':	$purple,
+	'red':		$red,
+	'orange':	$orange,
+	'yellow':	$yellow
+);

@@ -10,13 +10,10 @@
 //       or should binary be an element?
 
 .inputs {
-	// @todo kill this
-	border-top: 2px solid #fff;
-	padding-top: 20px;
-
 	.view {
 		display: inline-block;
 		flex-grow: 1;
+		font-weight: bold;
 		margin-bottom: 10px;
 		text-align: center;
 	}
@@ -34,48 +31,14 @@
 		@include user-select(none);
 		font-size: 1rem;
 
-		.view {
-			font-weight: bold;
-		}
-
 		.letter {
 			cursor: pointer;
 		}
 
-		&.green .on {
-			color: $green;
+		@each $key, $value in $colour-map {
+			&.#{$key} .on {
+				color: $value;
+			}
 		}
-
-		&.blue .on {
-			color: $blue;
-		}
-
-		&.purple .on {
-			color: $purple;
-		}
-
-		&.red .on {
-			color: $red;
-		}
-
-		&.orange .on {
-			color: $orange;
-		}
-
-		&.yellow .on {
-			color: $yellow;
-		}
-	}
-
-	.binary {
-		flex-direction: row;
-
-		.view {}
-	}
-
-	.hex {
-		flex-direction: row;
-
-		.view {}
 	}
 }
