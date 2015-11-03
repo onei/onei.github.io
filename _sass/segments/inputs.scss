@@ -1,0 +1,81 @@
+/**
+ * Sass for inputs section of segments page
+ */
+
+// @todo move this
+@import 'mixins';
+
+// @todo set colour for binary
+//       and maybe hex?
+//       or should binary be an element?
+
+.inputs {
+	// @todo kill this
+	border-top: 2px solid #fff;
+	padding-top: 20px;
+
+	.view {
+		display: inline-block;
+		flex-grow: 1;
+		margin-bottom: 10px;
+		text-align: center;
+	}
+
+	.letters,
+	.binary,
+	.hex {
+		display: flex;
+		margin: auto;
+		text-align: center;
+		width: 80%;
+	}
+
+	.letters {
+		@include user-select(none);
+		font-size: 1rem;
+
+		.view {
+			font-weight: bold;
+		}
+
+		.letter {
+			cursor: pointer;
+		}
+
+		&.green .on {
+			color: $green;
+		}
+
+		&.blue .on {
+			color: $blue;
+		}
+
+		&.purple .on {
+			color: $purple;
+		}
+
+		&.red .on {
+			color: $red;
+		}
+
+		&.orange .on {
+			color: $orange;
+		}
+
+		&.yellow .on {
+			color: $yellow;
+		}
+	}
+
+	.binary {
+		flex-direction: row;
+
+		.view {}
+	}
+
+	.hex {
+		flex-direction: row;
+
+		.view {}
+	}
+}

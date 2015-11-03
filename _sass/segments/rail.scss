@@ -1,0 +1,90 @@
+/**
+ * Sass for segments section of segments page
+ */
+
+@import 'mixins';
+@import 'segments/colours';
+
+.segments {
+	@include user-select(none);
+	height: 230px;
+	margin: 20px 0;
+	position: relative;
+
+	.seg-rail {
+		height: 230px;
+		margin: 10px 0;
+		position: relative;
+		overflow: hidden;
+		width: 100%;
+	}
+
+	.seg-overlay {
+		height: 230px;
+		line-height: 230px;
+		position: absolute;
+		top: 0;
+		// (articleWidth - 4(svgWidth) - 3(separatorWidth)) / 2
+		// (980 - 520 - 12) / 2
+		width: 224px;
+
+		&.seg-left {
+			@include linear-gradient(to right, #000 40%, transparent 100%);
+			left: 0;
+			text-align: right;
+		}
+
+		&.seg-right {
+			@include linear-gradient(to left, #000 40%, transparent 100%);	
+			right: 0;
+			text-align: left;
+		}
+	}
+
+	.seg-display {
+		height: 220px;
+		position: absolute;
+		top: 5px;
+		width: 130px;
+
+		// removed after initial positioning is complete
+		.hide {
+			display: none;
+		}
+	}
+
+	.seg-svg {
+		height: 220px;
+		width: 130px;
+
+		.seg {
+			cursor: pointer;
+			fill: rgba(255, 255, 255, 0.1);
+		}
+	}
+
+	// colours
+	.green .on {
+		fill: $green;
+	}
+
+	.blue .on {
+		fill: $blue;
+	}
+
+	.purple .on {
+		fill: $purple;
+	}
+
+	.red .on {
+		fill: $red;
+	}
+
+	.orange .on {
+		fill: $orange;
+	}
+
+	.yellow .on {
+		fill: $yellow;
+	}
+}

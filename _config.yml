@@ -5,3 +5,22 @@ highlighter: pygments
 sass:
   sass_dir:  _sass
   style:     compressed
+
+# segment config
+segments:
+  letters:
+    - DP
+    - G
+    - F
+    - E
+    - D
+    - C
+    - B
+    - A
+  colours:
+    - green
+    - blue
+    - purple
+    - red
+    - orange
+    - yellow

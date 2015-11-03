@@ -1,18 +1,18 @@
-<svg viewBox="0 0 301 494" xmlns="http://www.w3.org/2000/svg" class="segment-7">
+<svg viewBox="0 0 301 494" xmlns="http://www.w3.org/2000/svg" class="seg-svg">
 	<g>
 		<title>Click the segments to turn them on and off!</title>
 		<!-- horizontals -->
-		<path d="m31,22 v6 l22,22 h165 l22,-22 v-6 l-22,-22 h-165 l-22,22 z" class="seg-A seg" />
-		<path d="m31,243 v6 l22,22 h165 l22,-22 v-6 l-22,-22 h-165 l-22,22 z" class="seg-G seg" />
-		<path d="m31,466 v6 l22,22 h165 l22,-22 v-6 l-22,-22 h-165 l-22,22 z" class="seg-D seg" />
+		<path d="m31,22 v6 l22,22 h165 l22,-22 v-6 l-22,-22 h-165 l-22,22 z" data-segment="A" class="ani-quick seg" />
+		<path d="m31,243 v6 l22,22 h165 l22,-22 v-6 l-22,-22 h-165 l-22,22 z" data-segment="G" class="ani-quick seg" />
+		<path d="m31,466 v6 l22,22 h165 l22,-22 v-6 l-22,-22 h-165 l-22,22 z" data-segment="D" class="ani-quick seg" />
 
 		<!-- verticals -->
-		<path d="m22,31 h6 l22,22 v165 l-22,22 h-6 l-22,-22 v-165 l22,-22 z" class="seg-F seg" />
-		<path d="m243,31 h6 l22,22 v165 l-22,22 h-6 l-22,-22 v-165 l22,-22 z" class="seg-B seg" />
-		<path d="m22,253 h6 l22,22 v165 l-22,22 h-6 l-22,-22 v-165 l22,-22 z" class="seg-E seg" />
-		<path d="m243,253 h6 l22,22 v165 l-22,22 h-6 l-22,-22 v-165 l22,-22 z" class="seg-C seg" />
+		<path d="m22,31 h6 l22,22 v165 l-22,22 h-6 l-22,-22 v-165 l22,-22 z" data-segment="F" class="ani-quick seg" />
+		<path d="m243,31 h6 l22,22 v165 l-22,22 h-6 l-22,-22 v-165 l22,-22 z" data-segment="B" class="ani-quick seg" />
+		<path d="m22,253 h6 l22,22 v165 l-22,22 h-6 l-22,-22 v-165 l22,-22 z" data-segment="E" class="ani-quick seg" />
+		<path d="m243,253 h6 l22,22 v165 l-22,22 h-6 l-22,-22 v-165 l22,-22 z" data-segment="C" class="ani-quick seg" />
 
 		<!-- decimal point -->
-		<path d="m251,472 v-6 l22,-22 h6 l22,22 v6 l-22,22 h-6 l-22,-22 z" class="seg-DP seg" />
+		<path d="m251,472 v-6 l22,-22 h6 l22,22 v6 l-22,22 h-6 l-22,-22 z" data-segment="DP" class="ani-quick seg" />
 	</g>
 </svg>

@@ -1,0 +1,13 @@
+/**
+ * Sass animation classes for segments page
+ */
+
+@import 'mixins';
+
+.ani-slow {
+	@include transition(all 0.5s ease);
+}
+
+.ani-quick {
+	@include transition(all 0.25s ease);
+}

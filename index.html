@@ -2,74 +2,58 @@
 layout: default
 title: Segments
 ---
-<section class="instructions">
-	<h2>Instructions</h2>
-	<span class="collapse">[hide/show]</span>
-	<p class="collapsible">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer non tristique velit, eget ornare nibh. Curabitur erat nisl, maximus ac velit quis, elementum varius diam. In pulvinar porta augue, sed lacinia est egestas non. Duis eu consectetur augue. Curabitur porta mi leo, et ornare nisl fermentum aliquam. Donec ut augue nec erat congue vulputate. Donec vehicula lacus condimentum dolor placerat, nec porttitor lorem sollicitudin. Vivamus viverra, neque sed dignissim accumsan, risus neque congue turpis, a sollicitudin nisi est ac odio.</p>
-</section>
-<section class="segment-wrapper">
-	<div class="segment-rail">
-		<!-- todo: loop through this somehow -->
-		<div class="segment-display ani index-0" style="transform: translate(-44px, 5px);">
-			{% include svg/7-segment.svg %}
-		</div>
-		<div class="segment-display ani index-1" style="transform: translate(90px, 5px);">
-			{% include svg/7-segment.svg %}
-		</div>
-		<div class="segment-display ani index-2 view-0" style="transform: translate(224px, 5px);">
-			{% include svg/7-segment.svg %}
-		</div>
-		<div class="segment-display ani index-3 view-1" style="transform: translate(358px, 5px);">
-			{% include svg/7-segment.svg %}
-		</div>
-		<div class="segment-display ani index-4 view-2" style="transform: translate(492px, 5px);">
-			{% include svg/7-segment.svg %}
-		</div>
-		<div class="segment-display ani index-5 view-3" style="transform: translate(626px, 5px);">
-			{% include svg/7-segment.svg %}
-		</div>
-		<div class="segment-display ani index-6" style="transform: translate(760px, 5px);">
-			{% include svg/7-segment.svg %}
-		</div>
-		<div class="segment-display ani index-7" style="transform: translate(894px, 5px);">
-			{% include svg/7-segment.svg %}
-		</div>
+<!--
+requires
+	IE10+
+	FF21+
+
+unsupported broswers:
+	Opera mini
+
+@todo limit to 2 segements for mobile?
+-->
+<section id="segments" class="segments">
+	<div id="segRail" class="seg-rail">
+		{% for i in (0..7) %}
+			<div class="seg-display ani-slow" data-index="{{ i }}">
+				{% include svg/7-segment.svg %}
+			</div>
+		{% endfor %}
 	</div>
-	<div class="segment-overlay segment-overlay-left">
-		<span class="chevron left" title="move left"></span>
+	<div id="segOverlayLeft" class="seg-overlay seg-left">
+		<span id="chevronLeft" class="chevron chevron-left ani-quick" title="Move left"></span>
 	</div>
-	<div class="segment-overlay segment-overlay-right">
-		<span class="chevron right" title="move right"></span>
+	<div id="segOverlayRight" class="seg-overlay seg-right">
+		<span id="chevronRight" class="chevron chevron-right ani-quick" title="Move right"></span>
 	</div>
 </section>
-<section class="options">
-	<h2>Options</h2>
-	<div class="colours">Colour: [green] [blue] [purple] [red] [orange] [yellow]</div>
-	<div class="clear-fill">[Clear all] [Fill all]</div>
+<section id="options" class="options">
+	<div id="optionsColours" class="colours">
+		{% for colour in site.segments.colours %}
+			<span id="coloursPick{{ colour | capitalize }}" class="pick {{ colour }}" data-colour="{{colour}}"></span>
+		{% endfor %}
+	</div>
 </section>
-<section class="inputs">
-	<div class="letters">
-		<!-- todo generate via loop -->
-		<span class="view-0">DP G F E D C B A</span> |
-		<span class="view-1">DP G F E D C B A</span> |
-		<span class="view-2">DP G F E D C B A</span> |
-		<span class="view-3">DP G F E D C B A</span>
+<section id="inputs" class="inputs">
+	<div id="inputsLetters" class="letters">
+		{% for i in (0..3) %}
+			<div id="viewLetter{{ i }}" class="view" data-view="{{ i }}">
+
+			{% for letter in site.segments.letters %}
+				<span id="letter{{ letter }}" class="letter ani-quick" data-letter="{{ letter }}">{{ letter }}</span>
+			{% endfor %}
+
+			</div>
+		{% endfor %}
 	</div>
-	<div class="binary">
-		<!-- todo generate via loop -->
-		<span class="view-0">0000 0000</span> |
-		<span class="view-1">0000 0000</span> |
-		<span class="view-2">0000 0000</span> |
-		<span class="view-3">0000 0000</span> |
+	<div id="inputsBinary" class="binary">
+		{% for i in (0..3) %}
+			<div id="viewBinary{{ i }}" class="view" data-view="{{ i }}">0000 0000</div>
+		{% endfor %}
 	</div>
-	<div class="hex">
-		<!-- todo generate via loop -->
-		<span class="view-0">00</span> |
-		<span class="view-1">00</span> |
-		<span class="view-2">00</span> |
-		<span class="view-3">00</span>
-	</div>
-	<div class="submit">
-		<input type="submit" value="Submit">
+	<div id="inputsHex" class="hex">
+		{% for i in (0..3) %}
+			<div id="viewHex{{ i }}" class="view" data-view="{{ i }}">00</div>
+		{% endfor %}
 	</div>
 </section>

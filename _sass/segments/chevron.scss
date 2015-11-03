@@ -1,0 +1,33 @@
+/**
+ * Sass for chevrons in segment rail section of segments page
+ *
+ * Based on <http://codepen.io/jonneal/pen/kptBs>
+ */
+
+.chevron {
+	color: #808080;
+	cursor: pointer;
+
+	&:hover {
+		color: #fff;
+	}
+
+	&::before {
+		border-style: solid;
+		border-width: 0.75em 0.75em 0 0;
+		content: '';
+		display: inline-block;
+		height: 1.5em;
+		position: relative;
+		vertical-align: middle;
+		width: 1.5em;
+	}
+
+	&.chevron-right::before {
+		transform: rotate(45deg);
+	}
+
+	&.chevron-left::before {
+		transform: rotate(-135deg);
+	}
+}
