@@ -6,5 +6,5 @@
 {% if jekyll.environment == 'development' %}
 	{% include assets/js/segments/segment.js %}
 {% else %}
-	{% include assets/js/segment.min.js %}
+	{% include assets/js/segments.min.js %}
 {% endif %}	
