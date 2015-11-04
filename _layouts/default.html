@@ -8,7 +8,11 @@
 
 		<!-- stylesheets -->
 		<!-- @todo conditional assets based on page.include -->
-		<link rel="stylesheet" href="assets/styles.css">
+		{% if page.content == 'segments' %}
+			<link rel="stylesheet" href="assets/styles.css">
+		{% else %}
+			<link rel="stylesheet" href="assets/styles.css">
+		{% endif %}
 	</head>
 	<body>
 		<header id="headerContainer" class="header-container">{% include header.html %}</header>
@@ -20,6 +24,11 @@
 		-->
 
 		<!-- scripts -->
-		<script src="/assets/application.js"></script>
+		{% if page.content == 'segments' %}
+			<script src="/assets/application.js"></script>
+		{% else %}
+			<script src="/assets/application.js"></script>
+		{% endif %}
+		
 	</body>
 </html>
