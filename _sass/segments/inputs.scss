@@ -5,26 +5,31 @@
 // @todo move this
 @import 'mixins';
 
-// @todo set colour for binary
+// @todo set colour for binary and hex
 //       and maybe hex?
-//       or should binary be an element?
 
 .inputs {
 	.view {
 		display: inline-block;
 		flex-grow: 1;
-		font-weight: bold;
 		margin-bottom: 10px;
 		text-align: center;
 	}
 
 	.letters,
 	.binary,
-	.hex {
-		display: flex;
+	.hex,
+	.hex-combined {
+		font-weight: bold;
 		margin: auto;
 		text-align: center;
 		width: 80%;
+	}
+
+	.letters,
+	.binary,
+	.hex {
+		display: flex;
 	}
 
 	.letters {

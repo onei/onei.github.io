@@ -1,6 +1,7 @@
 ---
-layout: default
-title: Segments
+layout:		default
+title:		Segments
+include:	segments
 ---
 <!--
 requires
@@ -11,6 +12,7 @@ unsupported broswers:
 	Opera mini
 
 @todo limit to 2 segements for mobile?
+@todo do conditional import for segments js
 
 options:
     active low or active high
@@ -20,7 +22,7 @@ options:
 	<div id="segRail" class="seg-rail">
 		{% for i in (0..7) %}
 			<div class="seg-display ani-slow" data-index="{{ i }}">
-				{% include svg/7-segment.svg %}
+				{% include assets/images/7-segment.svg %}
 			</div>
 		{% endfor %}
 	</div>
@@ -62,4 +64,5 @@ options:
 			<div id="viewHex{{ i }}" class="view" data-view="{{ i }}">0x00</div>
 		{% endfor %}
 	</div>
+	<div id="inputsHexCombined" class="hex-combined">0x00000000</div>
 </section>
