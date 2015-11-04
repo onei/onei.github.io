@@ -7,6 +7,8 @@
 //       value=$hex animate=(1/0) activelow=(1/0) startwith=(DP/A) (startswith_)
 //       @todo find word for DP->A order
 
+// @todo split this up
+
 (function ($) {
 
 	'use strict';
@@ -53,7 +55,7 @@
 			 * Whether the display is active low (if the segment's bit is set to 1 it's off)
 			 * or active high (vice versa)
 			 */
-			activeLow: false,
+			activeLow: 1,
 
 			/**
 			 * 1 is DP->A, 0 is A->DP
@@ -495,9 +497,9 @@
 
 					$this.find('.letter').each(function () {
 						if ($(this).hasClass('on')) {
-							binStr += (settings.activeLow ? '0' : '1');
+							binStr += ((settings.activeLow === 1) ? '0' : '1');
 						} else {
-							binStr += (settings.activeLow ? '1' : '0');
+							binStr += ((settings.activeLow === 1) ? '1' : '0');
 						}
 					});
 

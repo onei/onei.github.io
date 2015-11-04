@@ -66,3 +66,31 @@ options:
 	</div>
 	<div id="inputsHexCombined" class="hex-combined">0x00000000</div>
 </section>
+<section id="config" class="config">
+	<form id="config-form" action="#">
+		<div id="configOrder" class="order">
+			<!-- h2? -->
+			<div class="config-header">Segment order</div>
+			<label for="order-1">
+				<input id="order-1" type="radio" name="order" value="1" checked>
+				DP, G, F, E, D, C, B, A
+			</label>
+			<label for="order-0">
+				<input id="order-0" type="radio" name="order" value="0">
+				A, B, C, D, E, F, G, DP
+			</label>
+		</div>
+		<div class="configActive">
+			<!-- h2? is this the right word? -->
+			<div class="config-header">Active state</div>
+			<label for="active-low">
+				<input id="active-low" type="radio" name="active" value="1" checked>
+				Active-Low
+			</label>
+			<label for="active-high">
+				<input id="active-high" type="radio" name="active" value="0">
+				Active-High
+			</label>
+		</div>
+	</form>
+</section>
