@@ -44,11 +44,6 @@
 		position: absolute;
 		top: 5px;
 		width: 130px;
-
-		// removed after initial positioning is complete
-		.hide {
-			display: none;
-		}
 	}
 
 	.seg-svg {
@@ -57,7 +52,7 @@
 
 		.seg {
 			cursor: pointer;
-			fill: rgba(255, 255, 255, 0.1);
+			fill: rgba(255, 255, 255, 0.2);
 		}
 	}
 

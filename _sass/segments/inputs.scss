@@ -34,15 +34,46 @@
 
 	.letters {
 		@include user-select(none);
-		font-size: 1rem;
+		// <http://stackoverflow.com/a/21135759/1942596>
+		font-size: 0rem;
 
 		.letter {
 			cursor: pointer;
+			font-size: 1rem;
+			margin: 0 3px;
 		}
 
 		@each $key, $value in $colour-map {
 			&.#{$key} .on {
 				color: $value;
+			}
+		}
+	}
+
+	.binary,
+	.hex {
+		@each $key, $value in $colour-map {
+			&.#{$key} {
+				@for $i from 0 through 8 {
+					.mix-#{$i} {
+						color: mix($value, $text, (12.5% * $i));
+					}
+				}
+			}
+		}
+	}
+
+	.hex-combined {
+		margin-top: 8px;
+		font-size: 1.2rem;
+
+		@each $key, $value in $colour-map {
+			&.#{$key} {
+				@for $i from 0 through 8 {
+					.mix-#{$i} {
+						color: mix($value, $text, (12.5% * $i));
+					}
+				}
 			}
 		}
 	}

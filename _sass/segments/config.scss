@@ -1,0 +1,39 @@
+/**
+ *
+ */
+
+.config {
+	.config-form {
+		display: flex;
+		margin: auto;
+		width: 80%;
+
+		label {
+			clear: both;
+			display: block;
+		}
+	}
+
+	.config-header {
+		display: block;
+		font-size: 1.2rem;
+		font-weight: bold;
+		margin-bottom: 8px;
+		text-align: center;
+	}
+
+	.radio {
+		flex-grow: 1;
+		display: inline-block;
+		text-align: center;
+
+		.input-wrapper {
+			display: inline-block;
+		}
+
+		label {
+			display: inline;
+			float: left;
+		}
+	}
+}

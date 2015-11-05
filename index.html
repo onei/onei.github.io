@@ -34,8 +34,6 @@ unsupported broswers:
 			<span id="coloursPick{{ colour | capitalize }}" class="pick {{ colour }}" data-colour="{{colour}}"></span>
 		{% endfor %}
 	</div>
-	<!-- @todo active low/high config -->
-	<!-- @todo reverse order of digits, i.e. DP -> A or A -> DP -->
 </section>
 <section id="inputs" class="inputs">
 	<div id="inputsLetters" class="letters">
@@ -59,33 +57,39 @@ unsupported broswers:
 			<div id="viewHex{{ i }}" class="view" data-view="{{ i }}">0x00</div>
 		{% endfor %}
 	</div>
-	<div id="inputsHexCombined" class="hex-combined">0x00000000</div>
+	<div id="inputsHexCombined" class="hex-combined">
+		<span class="combined">0x00000000</span>
+	</div>
 </section>
 <section id="config" class="config">
-	<form id="config-form" action="#">
-		<div id="configOrder" class="order">
+	<form id="configForm" class="config-form" action="#">
+		<div id="configOrder" class="order radio">
 			<!-- h2? -->
 			<div class="config-header">Segment order</div>
-			<label for="order-1">
-				<input id="order-1" type="radio" name="order" value="1" checked>
-				DP, G, F, E, D, C, B, A
-			</label>
-			<label for="order-0">
-				<input id="order-0" type="radio" name="order" value="0">
-				A, B, C, D, E, F, G, DP
-			</label>
+			<div class="input-wrapper">
+				<label for="order-1">
+					<input id="order-1" type="radio" name="order" value="1" checked>
+					DP&ndash;A
+				</label>
+				<label for="order-0">
+					<input id="order-0" type="radio" name="order" value="0">
+					A&ndash;DP
+				</label>
+			</div>
 		</div>
-		<div class="configActive">
+		<div id="configActive" class="active radio">
 			<!-- h2? is this the right word? -->
 			<div class="config-header">Active state</div>
-			<label for="active-low">
-				<input id="active-low" type="radio" name="active" value="1" checked>
-				Active-Low
-			</label>
-			<label for="active-high">
-				<input id="active-high" type="radio" name="active" value="0">
-				Active-High
-			</label>
+			<div class="input-wrapper">
+				<label for="active-low">
+					<input id="active-low" type="radio" name="active" value="1" checked>
+					Active-Low
+				</label>
+				<label for="active-high">
+					<input id="active-high" type="radio" name="active" value="0">
+					Active-High
+				</label>
+			</div>
 		</div>
 	</form>
 </section>

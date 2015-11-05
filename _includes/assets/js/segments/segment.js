@@ -61,6 +61,11 @@
 			 * 1 is DP->A, 0 is A->DP
 			 */
 			order: 1,
+
+			/**
+			 *
+			 */
+			colour: 'green'
 		},
 
 		/**
@@ -85,8 +90,8 @@
 				// set initial highlight colour
 				init.setColour();
 
-				// enforce values in `settings`
-				init.enforceSettings();
+				// check and enforce settings
+				init.checkSettings();
 
 				// segment click handlers
 				$('#segRail .seg').click(segments.highlight);
@@ -100,6 +105,9 @@
 
 				// letters click handlers
 				$('#inputsLetters .letter').click(inputs.highlightLetter);
+
+				// config click handlers
+				$('#configForm input').click(init.checkSettings);
 
 			},
 
@@ -151,8 +159,26 @@
 			 * Sets green as the initial highlight colour
 			 */
 			setColour: function () {
-				$('#coloursPickGreen').addClass('selected');
-				$('#segRail, #inputsLetters').addClass('green');
+				var ucColour = settings.colour.charAt(0).toUpperCase() + settings.colour.slice(1);
+
+				$('#coloursPick' + ucColour).addClass('selected');
+				$('#segRail, #inputsLetters, #inputsHex, #inputsBinary, #inputsHexCombined').addClass(settings.colour);
+
+				console.log($('#segRail, #inputsLetters, #inputsHex, #inputsBinary, #inputsHexCombined').get());
+			},
+
+			/**
+			 *
+			 */
+			checkSettings: function () {
+				settings.oldOrder = settings.order;
+
+				settings.activeLow = $('#configActive input[name="active"]:checked').val() * 1;
+				settings.order = $('#configOrder input[name="order"]:checked').val() * 1;
+
+				console.log(settings);
+
+				init.enforceSettings();
 			},
 
 			/**
@@ -163,7 +189,7 @@
 
 				// enforce order of segments
 				// matters when calculating binary and hex values
-				if (settings.order === 0) {
+				if (settings.order !== settings.oldOrder) {
 					$letters.each(function () {
 						// <http://stackoverflow.com/a/5347903/1942596>
 						var $this = $(this),
@@ -210,7 +236,6 @@
 						css;
 
 					if (matches === null) {
-						console.log('Error: No matches found.');
 						return;
 					}
 
@@ -262,7 +287,6 @@
 						css;
 
 					if (matches === null) {
-						console.log('Error: No matches found.');
 						return;
 					}
 
@@ -278,14 +302,11 @@
 				// convert to number and move it forward one
 				viewFirst = (viewFirst * 1) - 1;
 
-				console.log(viewFirst);
-
 				segments.reView(viewFirst);
 				segments.prepend();
 
 				// fix for when prepending an element causes the indexing to be incorrect
 				if ($segs.length < $('#segRail .seg-display').length) {
-					console.log('extra element detected');
 					viewFirst += 1
 				}
 
@@ -400,7 +421,7 @@
 		},
 
 		/**
-		 * Methods relting to the options section
+		 * Methods relating to the options section
 		 */
 		options = {
 			/**
@@ -409,7 +430,7 @@
 			colourPick: function () {
 				var $this = $(this),
 					$old = $('#optionsColours .selected'),
-					$update = $('#segRail, #inputsLetters'),
+					$update = $('#segRail, #inputsLetters, #inputsHex, #inputsBinary, #inputsHexCombined'),
 					newClass = $this.attr('data-colour'),
 					oldClass = $old.attr('data-colour');
 
@@ -458,9 +479,6 @@
 					$letters = $('#inputsLetters .view'),
 					$segs = $('#segRail .seg-display').slice(index, index + 4);
 
-				console.log($segs.get());
-				console.log($segs.get(0));
-
 				$segs.each(function (i) {
 					var $seg = $(this),
 						$letter = $letters.eq(i).find('.letter');
@@ -486,18 +504,36 @@
 			updateBinaryHex: function () {
 				var $letters = $('#inputsLetters .view'),
 					$bins = $('#inputsBinary .view'),
-					$hexs = $('#inputsHex .view');
+					$hexs = $('#inputsHex .view'),
+					hexCombined = '0x',
+					k = 0,
+					mixClasses = [
+						'mix-0',
+						'mix-1',
+						'mix-2',
+						'mix-3',
+						'mix-4',
+						'mix-5',
+						'mix-6',
+						'mix-7',
+						'mix-8'
+					],
+					mixPrefix = 'mix-';
+
+				mixClasses = mixClasses.join(' ');
 
 				$letters.each(function (i) {
 					var $this = $(this),
 						$bin = $bins.eq(i),
 						$hex = $hexs.eq(i),
+						j = 0,
 						binStr = '0b',
 						hexStr = '0x';
 
 					$this.find('.letter').each(function () {
 						if ($(this).hasClass('on')) {
 							binStr += ((settings.activeLow === 1) ? '0' : '1');
+							j += 1;
 						} else {
 							binStr += ((settings.activeLow === 1) ? '1' : '0');
 						}
@@ -507,12 +543,30 @@
 
 					hexStr += ('00' + (binStr * 1).toString(16)).slice(-2);
 
-					console.log(binStr);
-					console.log(hexStr);
-
 					$bin.text(binStr);
 					$hex.text(hexStr);
+
+					$bin
+						.removeClass(mixClasses)
+						.addClass(mixPrefix + j)
+						.text(binStr);
+
+					$hex
+						.removeClass(mixClasses)
+						.addClass(mixPrefix + j)
+						.text(hexStr);
+
+					hexCombined += hexStr.slice(-2);
+					k += j;
 				});
+
+				k = Math.floor(k / maxElements);
+				console.log(k);
+
+				$('#inputsHexCombined .combined')
+					.removeClass(mixClasses)
+					.addClass(mixPrefix + k)
+					.text(hexCombined);
 			}
 		},
 
